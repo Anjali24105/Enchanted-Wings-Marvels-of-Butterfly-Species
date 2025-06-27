@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Get Started - Upload</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            background: #333;
+            color: white;
+            padding: 20px 40px;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            padding: 50px;
+        }
+
+        input[type="file"] {
+            padding: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: darkgreen;
+            color: white;
+            border: none;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .newsletter {
+            background-color: #ddd;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .newsletter input {
+            padding: 10px;
+            width: 250px;
+        }
+
+        .newsletter button {
+            padding: 10px 20px;
+            background: darkgreen;
+            color: white;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: darkblue;
+        }
+
+        img.preview {
+            margin-top: 20px;
+            max-width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Prediction Page</h1>
+    <p>Upload your butterfly image</p>
+</header>
+
+<div class="container">
+    <h2>Upload an image of a butterfly</h2>
+    <form action="/predict" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" required>
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction %}
+        <div class="result">
+            <p><strong>Prediction:</strong> {{ prediction }}</p>
+            <img src="{{ image_file }}" alt="Uploaded Image" class="preview">
+        </div>
+    {% endif %}
+</div>
+
+<div class="newsletter">
+    <h3>SUBSCRIBE TO OUR NEWSLETTER</h3>
+    <p>Stay updated with our latest butterfly insights and predictions.</p>
+    <input type="email" placeholder="Enter your email">
+    <button>Subscribe</button>
+</div>
+
+</body>
+</html>
